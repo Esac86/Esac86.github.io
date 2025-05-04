@@ -4,9 +4,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const modalLinksContainer = document.getElementById("modalLinksContainer");
     const paginationContainer = document.getElementById("paginationContainer");
     const modal = new bootstrap.Modal(document.getElementById("descargasModal"));
-
-    // Configuración de paginación
-    const juegosPorPagina = 8; // 2 filas de 4 juegos
+    
+    const juegosPorPagina = 8;
     let paginaActual = 1;
 
     const response = await fetch("juegos.json");
@@ -16,12 +15,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     function renderJuegos(lista, pagina) {
         juegosContainer.innerHTML = "";
 
-        // Calcular índices para la paginación
         const inicio = (pagina - 1) * juegosPorPagina;
         const fin = inicio + juegosPorPagina;
         const juegosEnPagina = lista.slice(inicio, fin);
 
-        // Mostrar juegos para la página actual
         juegosEnPagina.forEach(juego => {
             const card = document.createElement("div");
             card.className = "game-card-container";
@@ -43,7 +40,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             juegosContainer.appendChild(card);
         });
 
-        // Actualizar la paginación
         renderPaginacion(lista.length);
     }
 
@@ -51,10 +47,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const totalPaginas = Math.ceil(totalJuegos / juegosPorPagina);
         paginationContainer.innerHTML = "";
 
-        // Si solo hay una página, no mostramos la paginación
         if (totalPaginas <= 1) return;
 
-        // Botón anterior
         const prevLi = document.createElement("li");
         prevLi.className = `page-item ${paginaActual === 1 ? 'disabled' : ''}`;
         prevLi.innerHTML = `
@@ -71,12 +65,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
         paginationContainer.appendChild(prevLi);
 
-        // Botones de página
-        const maxPages = 5; // Número máximo de botones de página visibles
+        const maxPages = 5;
         let startPage = Math.max(1, paginaActual - Math.floor(maxPages / 2));
         let endPage = Math.min(totalPaginas, startPage + maxPages - 1);
 
-        // Ajusta si estamos cerca del final
         if (endPage - startPage + 1 < maxPages) {
             startPage = Math.max(1, endPage - maxPages + 1);
         }
@@ -93,7 +85,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             paginationContainer.appendChild(li);
         }
 
-        // Botón siguiente
         const nextLi = document.createElement("li");
         nextLi.className = `page-item ${paginaActual === totalPaginas ? 'disabled' : ''}`;
         nextLi.innerHTML = `
@@ -125,7 +116,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.filtrarJuegos = function () {
         const texto = searchInput.value.toLowerCase();
         juegosFiltrados = juegos.filter(j => j.nombre.toLowerCase().includes(texto));
-        paginaActual = 1; // Reiniciar a la primera página al filtrar
+        paginaActual = 1;
         renderJuegos(juegosFiltrados, paginaActual);
     };
 
@@ -138,6 +129,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // Iniciar con la primera página
     renderJuegos(juegos, paginaActual);
 });
