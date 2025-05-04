@@ -4,6 +4,16 @@
       "nombre": "R.E.P.O",
       "portada": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9lxz.webp",
       "links": ["https://www.mediafire.com/file/0uww8b8t5waie4d"]
+    },
+    {
+      "id": 2,
+      "nombre": "Assassin’s Creed: Director’s Cut",
+      "portada": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1zj6.webp",
+      "links": ["https://www.mediafire.com/file/f94bgbatfwz465f/A1sCr1eedDC1.02V2-elamigos.part1.rar/file",
+                "https://www.mediafire.com/file/abuejyebg84if6j/A1sCr1eedDC1.02V2-elamigos.part2.rar/file",
+                "https://www.mediafire.com/file/ezu4muovjc27ob5/A1sCr1eedDC1.02V2-elamigos.part3.rar/file",
+                "https://www.mediafire.com/file/xhwcig9vv6xqdfb/A1sCr1eedDC1.02V2-elamigos.part4.rar/file"
+      ]
     }
   ]
   
