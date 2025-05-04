@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <img src="${juego.portada}" class="game-image" alt="${juego.nombre}">
             </div>
             <div class="game-info">
-              <h5 class="game-title">${juego.nombre}</h5>
+              <h5 class="game-title" title="${juego.nombre}">${juego.nombre}</h5>
               <button class="download-btn" onclick='descargarJuego(${JSON.stringify(juego.links)})'>
                 <i class="fas fa-download"></i>
               </button>
