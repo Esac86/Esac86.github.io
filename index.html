@@ -2,76 +2,54 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Esac-Games</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños Camila</title>
+  <link rel="stylesheet" href="style.css">
 
 </head>
-<body class="bg-light">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">Esac-Games</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <div class="d-flex align-items-center">
-          <div class="search-container" id="searchContainer">
-            <input type="text" id="search" class="form-control navbar-search" placeholder="Buscar juegos..."
-              oninput="filtrarJuegos()" />
-          </div>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="toggleSearch">
-                <i class="fa fa-search"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <main>
-    <div class="container py-5">
-      <div id="juegosContainer" class="justify-content-center"></div>
-      <div class="pagination-container d-flex justify-content-center">
-        <nav aria-label="Navegación de páginas">
-          <ul class="pagination" id="paginationContainer"></ul>
-        </nav>
-      </div>
-    </div>
-  </main>
-
-  <footer class="bg-dark text-white py-2 mt-auto">
-    <div class="container text-center">
-      <p class="mb-2">¡Únete a nuestra comunidad!</p>
-      <button class="btn btn-primary btn-sm" onclick="window.open('https://discord.gg/FHzksa6UZY', '_blank')">
-        <i class="fab fa-discord"></i> Unirse a Discord
-      </button>
-    </div>
-  </footer>
-
-  <div class="modal fade" id="descargasModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content p-3">
-        <div class="modal-header">
-          <h5 class="modal-title">Descargas disponibles</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body" id="modalLinksContainer"></div>
+<body>
+  <div class="card">
+    <h1>¡Felicidades Cami! 🎉</h1>
+    <p>Una estrella brilla un poco más hoy con tu amanecer número 16. Aquí viene un mensaje de alguien que también te
+      quiere 💖</p>
+    <button onclick="mostrarVideo()">Desplegar</button>
+    <div id="videoContainer">
+      <video src="video.mp4" controls></video>
+      <div class="final-message" id="mensajeFinal">
+        Gracias por existir 🌟 Tu luz hace este mundo más bonito.
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function mostrarVideo() {
+      const container = document.getElementById("videoContainer");
+      const mensaje = document.getElementById("mensajeFinal");
+
+      container.style.display = "block";
+      container.classList.add("fade-in");
+
+      setTimeout(() => {
+        mensaje.style.display = "block";
+        mensaje.classList.add("fade-in");
+      }, 1500);
+    }
+
+  </script>
 </body>
 
 </html>
