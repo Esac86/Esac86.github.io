@@ -4,23 +4,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz Cumpleaños Camila</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Para Camila...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow-x: hidden;
+    }
 
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    h1, h2 {
+      font-family: 'Pacifico', cursive;
+      color: #d63384;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #444;
+      margin: 1.5rem 0;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    button {
+      padding: 0.8rem 1.5rem;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #e73370;
+    }
+
+    .seccion {
+      display: none;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    #respuesta {
+      display: none;
+      font-size: 1.5rem;
+      color: #d63384;
+      margin-top: 2rem;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: float 6s infinite ease-in;
+      opacity: 0.8;
+    }
+
+    .heart:before, .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1) rotate(-45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(1.5) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>¡Felicidades Cami! 🎉</h1>
-    <p>Una estrella brilla un poco más hoy con tu amanecer número 16. Aquí viene un mensaje de alguien que también te
-      quiere 💖</p>
-    <button onclick="mostrarVideo()">Desplegar</button>
-    <div id="videoContainer">
-      <video src="video.mp4" controls></video>
-      <div class="final-message" id="mensajeFinal">
-        Gracias por existir 🌟 Tu luz hace este mundo más bonito.
-      </div>
+  <div class="container">
+    <h1>Camila, tengo algo que decirte...</h1>
+    <button onclick="mostrarSeccion('inicio')">Ver historia</button>
+
+    <div class="seccion" id="inicio">
+      <h2>🌟 El Comienzo</h2>
+      <p>Nos conocimos sin planearlo. Una casualidad más entre tantas. Pero algo en vos llamó mi atención desde el primer día.</p>
+      <p>Tu forma de hablar, tu energía... había algo especial que me hacía quedarme escuchando un poco más.</p>
+      <button onclick="mostrarSeccion('panas')">Seguir...</button>
     </div>
+
+    <div class="seccion" id="panas">
+      <h2>🎈 Panitas, Amigos, Confidentes</h2>
+      <p>Con el tiempo, nos hicimos cercanos. Esas conversaciones tontas, esos momentos espontáneos llenos de risa y cariño.</p>
+      <p>Te convertiste en alguien muy importante para mí sin que me diera cuenta.</p>
+      <button onclick="mostrarSeccion('confesion')">Seguir...</button>
+    </div>
+
+    <div class="seccion" id="confesion">
+      <h2>💌 Lo que Sentía</h2>
+      <p>Un día, no pude callarlo más. Te confesé que me gustabas. Que mi cariño ya no era solo de amigo, sino algo más profundo.</p>
+      <p>Pero no era tu momento. Y aunque me dolió, respeté tu espacio, porque lo que sentía era sincero.</p>
+      <button onclick="mostrarSeccion('ahora')">Seguir...</button>
+    </div>
+
+    <div class="seccion" id="ahora">
+      <h2>💫 Hoy</h2>
+      <p>Hoy estamos aquí. Vos con una mirada distinta, yo con el mismo corazón pero más consciente.</p>
+      <p>No sé qué pasará mañana, pero sí sé lo que quiero preguntarte ahora...</p>
+      <button onclick="mostrarSeccion('pregunta')">¿Cuál?</button>
+    </div>
+
+    <div class="seccion" id="pregunta">
+      <h2 style="font-size: 2rem;">¿Te gustaría construir algo conmigo? 💞</h2>
+      <button onclick="respuesta('si')">¡Sí! 🥹</button>
+      <button onclick="respuesta('no')">No 😭</button>
+    </div>
+
+    <div id="respuesta"></div>
   </div>
 
   <script>
@@ -30,25 +173,23 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 6000);
     }
 
-    setInterval(createHeart, 300);
+    setInterval(createHeart, 400);
 
-    function mostrarVideo() {
-      const container = document.getElementById("videoContainer");
-      const mensaje = document.getElementById("mensajeFinal");
-
-      container.style.display = "block";
-      container.classList.add("fade-in");
-
-      setTimeout(() => {
-        mensaje.style.display = "block";
-        mensaje.classList.add("fade-in");
-      }, 1500);
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.seccion').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
     }
 
+    function respuesta(opcion) {
+      const r = document.getElementById("respuesta");
+      r.style.display = "block";
+      r.innerHTML = opcion === "si"
+        ? "Así se empieza algo hermoso ✨ Gracias por decir que sí."
+        : "Ay :( Entonces volveré a intentarlo en otra vida, princesa.";
+    }
   </script>
 </body>
 
